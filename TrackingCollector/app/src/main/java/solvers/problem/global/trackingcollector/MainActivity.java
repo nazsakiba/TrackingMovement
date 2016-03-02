@@ -58,16 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void showSwitchToast(Switch switchView) {
         if (!switchView.isChecked())
-            Toast.makeText(this, "No longer tracking position", Toast.LENGTH_SHORT).show();
-
-        int id = switchView.getId();
-        switch (id) {
-            case R.id.switchCar:
-                Toast.makeText(this, "Now tracking as driving", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.switchCycle:
-                Toast.makeText(this, "Now tracking as cyclist", Toast.LENGTH_SHORT).show();
-                break;
+            CustomToast.ShowMessage(R.string.TRACKING_OFF, this);
+        else {
+            switch (switchView.getId()) {
+                case R.id.switchCar:
+                    CustomToast.ShowMessage(R.string.DRIVING_TOAST, this);
+                    break;
+                case R.id.switchCycle:
+                    CustomToast.ShowMessage(R.string.CYCLING_TOAST, this);
+                    break;
+            }
         }
     }
 
