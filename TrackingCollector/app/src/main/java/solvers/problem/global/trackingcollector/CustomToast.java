@@ -12,7 +12,6 @@ public class CustomToast {
     public static Toast previousToast = null;
 
     public static void ShowMessage(int message, Context context) {
-        System.out.println(message);
         if (previousToast != null) {
             previousToast.cancel();
         }

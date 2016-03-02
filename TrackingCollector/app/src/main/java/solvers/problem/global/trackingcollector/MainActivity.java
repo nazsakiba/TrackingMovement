@@ -64,8 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.switchCar:
                     CustomToast.ShowMessage(R.string.DRIVING_TOAST, this);
                     break;
-                case R.id.switchCycle:
+                case R.id.switchBicycle:
                     CustomToast.ShowMessage(R.string.CYCLING_TOAST, this);
+                    break;
+                case R.id.switchPedestrian:
+                    CustomToast.ShowMessage(R.string.PEDESTRIAN_TOAST, this);
+                    break;
+                case R.id.switchBus:
+                    CustomToast.ShowMessage(R.string.COMMUTING_TOAST, this);
                     break;
             }
         }
@@ -74,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Switch> getSwitchButtonList() {
         ArrayList<Switch> switchButtons = new ArrayList<>();
         switchButtons.add((Switch) (findViewById(R.id.switchCar)));
-        switchButtons.add((Switch) (findViewById(R.id.switchCycle)));
+        switchButtons.add((Switch) (findViewById(R.id.switchBicycle)));
+        switchButtons.add((Switch) (findViewById(R.id.switchBus)));
+        switchButtons.add((Switch) (findViewById(R.id.switchPedestrian)));
+
 
         return switchButtons;
     }
@@ -136,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void showLog(View view) {
-        ((TextView)findViewById(R.id.editText)).setText(t.log);
-    }
+    //public void showLog(View view) {
+      //  ((TextView)findViewById(R.id.editText)).setText(t.log);
+    //}
 }
