@@ -8,7 +8,10 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import java.lang.reflect.Constructor;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Johannes on 02.03.2016.
@@ -18,15 +21,14 @@ import java.util.ArrayList;
 public class Tracker {
 
     private Context parentContext;
-    private ArrayList<Location> locationsLog;
-    public String log = "";
+    private ArrayList<LocationDataPoint> locationsLog;
 
     public Tracker(Context parentContext) {
         this.parentContext = parentContext;
         locationsLog = new ArrayList<>();
     }
 
-    public ArrayList<Location> getLocationsLog() {
+    public ArrayList<LocationDataPoint> getLocationsLog() {
         return locationsLog;
     }
     public void clearLocationsLog() {locationsLog.clear();}
@@ -38,11 +40,12 @@ public class Tracker {
 
             @Override
             public void onLocationChanged(Location location) {
-                locationsLog.add(location);
+                LocationDataPoint ldp = new LocationDataPoint(location.getLatitude(), location.getLongitude(),
+                        location.getTime(), MainActivity.currentMode, 0);
+                locationsLog.add(ldp);
                 System.out.println("Position: " + location.toString());
                 System.out.println("latitude: " + location.getLatitude());
                 System.out.println("longitude: " + location.getLongitude());
-                log += locationsLog.size() + "     " + location.getLongitude() + " " + location.getLatitude() + "\n";
             }
 
             @Override

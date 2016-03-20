@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static Tracker t;
+    public static TransportationMode currentMode = TransportationMode.CYCLING;
 
 
     @Override
@@ -46,18 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.log_settings) {
-            Intent i = new Intent(this, LogActivity.class);
-            i.putExtra(getResources().getString(R.string.log_intent), t.log);
-            this.startActivity(i);
+            this.startActivity(new Intent(this, LogActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void getAllViewsOfType(View top, View target) {
-
-        Log.d("asd", (target instanceof Switch) + "");
     }
 
     public void showSwitchToast(Switch switchView) {
@@ -67,15 +61,19 @@ public class MainActivity extends AppCompatActivity {
         else {
             switch (switchView.getId()) {
                 case R.id.switchCar:
+                    currentMode = TransportationMode.DRIVING;
                     CustomToast.ShowMessage(R.string.DRIVING_TOAST, this);
                     break;
                 case R.id.switchBicycle:
+                    currentMode = TransportationMode.CYCLING;
                     CustomToast.ShowMessage(R.string.CYCLING_TOAST, this);
                     break;
                 case R.id.switchPedestrian:
+                    currentMode = TransportationMode.PEDESTRIAN;
                     CustomToast.ShowMessage(R.string.PEDESTRIAN_TOAST, this);
                     break;
                 case R.id.switchBus:
+                    currentMode = TransportationMode.COMMUTE;
                     CustomToast.ShowMessage(R.string.COMMUTING_TOAST, this);
                     break;
             }
