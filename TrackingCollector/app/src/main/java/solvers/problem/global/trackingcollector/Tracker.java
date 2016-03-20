@@ -42,7 +42,7 @@ public class Tracker {
                 System.out.println("Position: " + location.toString());
                 System.out.println("latitude: " + location.getLatitude());
                 System.out.println("longitude: " + location.getLongitude());
-                log += location.getLongitude() + " " + location.getLatitude() + "\n";
+                log += locationsLog.size() + "     " + location.getLongitude() + " " + location.getLatitude() + "\n";
             }
 
             @Override
