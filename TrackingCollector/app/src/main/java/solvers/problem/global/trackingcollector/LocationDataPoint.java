@@ -24,9 +24,17 @@ public class LocationDataPoint {
 
 
     public String convertTime(long time){
-        Date date = new Date(time);
-        Format format = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
-        return format.format(date);
+        java.util.Date dt = new java.util.Date();
+
+        java.text.SimpleDateFormat sdf =
+                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return sdf.format(dt);
+
+
+        //Date date = new Date(time);
+        //Format format = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
+        //return format.format(date);
     }
 
 }
