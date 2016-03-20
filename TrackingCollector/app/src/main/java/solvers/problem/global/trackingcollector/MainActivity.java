@@ -1,10 +1,12 @@
 package solvers.problem.global.trackingcollector;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -17,16 +19,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Tracker t;
+    public static Tracker t;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeTracking();
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -44,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.log_settings) {
+            Intent i = new Intent(this, LogActivity.class);
+            i.putExtra(getResources().getString(R.string.log_intent), t.log);
+            this.startActivity(i);
             return true;
         }
 
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSwitchToast(Switch switchView) {
+        initializeTracking();
         if (!switchView.isChecked())
             CustomToast.ShowMessage(R.string.TRACKING_OFF, this);
         else {
@@ -84,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         switchButtons.add((Switch) (findViewById(R.id.switchBus)));
         switchButtons.add((Switch) (findViewById(R.id.switchPedestrian)));
 
-
         return switchButtons;
     }
 
@@ -105,9 +109,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initializeTracking() {
+        if (t != null)
+            return;
         if (!checkPermissions()) {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},R.integer.PERMISSION_CALLBACK_ID);
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},R.integer.PERMISSION_CALLBACK_ID);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},42);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},42);
         } else {
             t = new Tracker((this));
             t.startLocationTracking();
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        switch (requestCode) {
+        switch (42) {
             case R.integer.PERMISSION_CALLBACK_ID: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

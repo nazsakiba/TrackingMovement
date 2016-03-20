@@ -4,157 +4,115 @@
 
     android:layout_height="fill_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
     <TextView
-
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
-
         android:textAppearance="?android:attr/textAppearanceLarge"
-
         android:text="Select your means of transport!"
-
         android:id="@+id/textView"
-
-        android:layout_marginTop="72dp"
-
-        android:layout_alignParentTop="true"
-
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
-
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
-
         android:layout_width="wrap_content"
-
         android:layout_height="match_parent"
-
         android:layout_centerHorizontal="true"
-
         android:gravity="center_vertical">
-
         <LinearLayout
-
+            android:layout_margin="20dp"
             android:orientation="horizontal"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content">
-
             <ImageView
-
+                android:layout_marginRight="20dp"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/imageView1"
-
                 android:src="@drawable/bus"/>
-
             <Switch
-
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:onClick="switchOnClick"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/switchBus"
-
                 android:switchMinWidth="86dp"/>
-
-
-
         </LinearLayout>
 
         <LinearLayout
-
+            android:layout_margin="20dp"
             android:orientation="horizontal"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content">
-
             <ImageView
+                android:layout_marginRight="20dp"
 
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/imageView2"
-
                 android:src="@drawable/car"/>
-
             <Switch
+                android:layout_gravity="center"
 
                 android:layout_width="wrap_content"
                 android:onClick="switchOnClick"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/switchCar"
-
                 android:switchMinWidth="86dp"/>
-
         </LinearLayout>
 
         <LinearLayout
-
+            android:layout_margin="20dp"
             android:orientation="horizontal"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content">
-
             <ImageView
+                android:layout_marginRight="20dp"
 
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/imageView3"
-
                 android:src="@drawable/bicylce"/>
-
             <Switch
+                android:layout_gravity="center"
 
                 android:layout_width="wrap_content"
                 android:onClick="switchOnClick"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/switchBicycle"
-
                 android:switchMinWidth="86dp"/>
-
         </LinearLayout>
 
         <LinearLayout
-
+            android:layout_margin="20dp"
             android:orientation="horizontal"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content">
 
             <ImageView
-
+                android:layout_marginRight="20dp"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:id="@+id/imageView4"
-
                 android:src="@drawable/pedestrian"/>
 
             <Switch
+                android:layout_gravity="center"
 
                 android:layout_width="wrap_content"
                 android:onClick="switchOnClick"
                 android:layout_height="wrap_content"
-
                 android:id="@+id/switchPedestrian"
-
                 android:switchMinWidth="86dp"/>
 
         </LinearLayout>

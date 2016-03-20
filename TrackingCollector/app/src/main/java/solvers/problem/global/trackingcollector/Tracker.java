@@ -7,6 +7,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 /**
@@ -69,11 +70,14 @@ public class Tracker {
             }
         };
 
-        System.out.println("asking for updates");
+        int min_distance = parentContext.getResources().getInteger(R.integer.MIN_DISTANCE);
+        int min_time = parentContext.getResources().getInteger(R.integer.MIN_TIME);
+
         try {
             locationManager.requestLocationUpdates(getProvider(locationManager),
-                    R.integer.MIN_TIME, R.integer.MIN_DISTANCE, locationListener);
-        } catch (SecurityException e) {}
+                    min_time, min_distance, locationListener);
+        } catch (SecurityException e) {
+            System.out.println("some error");}
 
     }
 

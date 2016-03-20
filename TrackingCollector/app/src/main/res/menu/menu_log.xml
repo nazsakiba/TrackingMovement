@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="solvers.problem.global.trackingcollector.MainActivity">
+    tools:context="solvers.problem.global.trackingcollector.LogActivity">
     <item
-        android:id="@+id/log_settings"
+        android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/log_settings"
+        android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
